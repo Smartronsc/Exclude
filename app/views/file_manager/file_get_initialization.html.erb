@@ -3,14 +3,13 @@
 <% if @directories.blank? %>
 <p>There are not any directories currently in the system.</p>
 <% else %>
-<p>These are the current directories in our system</p>
-
-<li><%= link_to @directories, {:action => 'file_get_more_information'} -%></li>
-
+<p>Dill down from one of these directories</p>
 
 <ul id = "directories">
-   <% @directories.each do |directory| %>
-   <li><%= link_to @directories, {:action => 'file_get_more_information'} -%></li>
+   <% @directory = @directories.split(",") %>
+   <% @directory.each do |name| %>
+   <% @name = name[0]; p "name #{name.is_a?(Array)}" %>
+   <li><%= link_to @name, {:action => 'file_get_more_information'} -%></li>
    <% end %>
 </ul>
 

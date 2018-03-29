@@ -27,7 +27,6 @@ class FileManagerController < ActionController::Base
         @directories.push("#{directory}") if File.directory?("#{directory}")
       end
     end 
-    p "@directories #{@directories}"
     return @directories
   end
 
@@ -35,6 +34,18 @@ class FileManagerController < ActionController::Base
   end
 
   def file_get_more_information
+    def file_get_more_information
+      @current_directory = @directory
+      @files = []
+      @file_information = {}                                            # {"/directory"=>["file"], "/directory/directory"=>["file", "file"]
+      directory = "#{@current_directory}/#{directory}" unless @current_directory == ""
+      @current_directory = directory                                                    
+      Dir.chdir("#{directory}")                                      
+      Dir.foreach("#{directory}") { |d| @files.push(d) unless d == "." || d == ".." }
+      @file_information.store(directory, @files)
+      @files = []
+      return @file_information
+    end
   end
 
   def file_open
