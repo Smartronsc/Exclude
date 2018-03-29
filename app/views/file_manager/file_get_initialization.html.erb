@@ -1,2 +1,17 @@
 <h1>FileManager#file_get_initialization</h1>
 <p>Find me in app/views/file_manager/file_get_initialization.html.erb</p>
+<% if @directories.blank? %>
+<p>There are not any directories currently in the system.</p>
+<% else %>
+<p>These are the current directories in our system</p>
+
+<li><%= link_to @directories, {:action => 'file_get_more_information'} -%></li>
+
+
+<ul id = "directories">
+   <% @directories.each do |directory| %>
+   <li><%= link_to @directories, {:action => 'file_get_more_information'} -%></li>
+   <% end %>
+</ul>
+
+<% end %>

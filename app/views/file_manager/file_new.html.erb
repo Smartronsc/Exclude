@@ -1,0 +1,14 @@
+<h4>FileManager#file_new</h4>
+<h2>Select a directory to start with</h2>
+
+<%= form_tag :action => 'file_get_initialization' do %>
+
+<p>
+<label for = "directory">Directory</label>:
+<%= text_field 'directory_params', 'directory' %>
+</p>
+
+<%= submit_tag " List " %>  
+<% end -%>
+
+<%= link_to 'Back', {:action => 'file_open'} %>
